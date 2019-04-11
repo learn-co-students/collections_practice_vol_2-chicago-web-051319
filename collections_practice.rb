@@ -42,10 +42,10 @@ def merge_data(arr1, arr2)
     arr1.each do |data|
       if data[:first_name] == name
         hash = value.merge(data)
+        end
       end
-    end
     hash
-  end
+    end
 end
 
 def find_cool(arr)
