@@ -36,25 +36,16 @@ def count_elements(arr)
   end
 #arr.uniq.map { |x| [arr.count(x), x] }
 
-def merge_data(keys, data)
-  name = [
-        {
-             :first_name => "blake",
-            :awesomeness => 10,
-                 :height => "74",
-              :last_name => "johnson",
-                  :motto => "Have a koala-ty day!"
-
-        },
-        {
-             :first_name => "ashley",
-            :awesomeness => 9,
-                 :height => 60,
-              :last_name => "dubs",
-                  :motto => "I dub thee, 'Lady Brett Ashley'."
-
-        }
-    ]
+def merge_data(arr1, arr2)
+  arr2[0].map do |name, prop_hash|
+    new_prop_hash = {}
+    arr1.each do |new_attr_hash|
+      if new_attr_hash[:first_name] == name
+        new_prop_hash = prop_hash.merge(new_attr_hash)
+      end
+    end
+    new_prop_hash
+  end
 end
 
 def find_cool(arr)
@@ -67,10 +58,21 @@ arr.each do|hash|
   end
 end
 
-def organize_schools(arr)
-{"Chicago"=>["dev boot camp chicago"], "NYC"=>["flatiron school bk", "flatiron school", "general assembly"], "SF"=>["dev boot camp", "Hack Reactor"]}
 
+def organize_schools(schools)
+  organized_schools = {}
+  schools.each do |name, location_hash|
+    location = location_hash[:location]
+    if organized_schools[location]
+      organized_schools[location] << name
+    else
+      organized_schools[location] = []
+      organized_schools[location] << name
+    end
+  end
+  organized_schools
 end
+
 
 
 #{"Chicago"=>["dev boot camp chicago"], "NYC"=>["flatiron school bk", "flatiron school", "general assembly"], "SF"=>["dev boot camp", "Hack Reactor"]}
