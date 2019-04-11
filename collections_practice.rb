@@ -37,14 +37,14 @@ def count_elements(arr)
 #arr.uniq.map { |x| [arr.count(x), x] }
 
 def merge_data(arr1, arr2)
-  arr2[0].map do |name, prop_hash|
-    new_prop_hash = {}
-    arr1.each do |new_attr_hash|
-      if new_attr_hash[:first_name] == name
-        new_prop_hash = prop_hash.merge(new_attr_hash)
+  arr2[0].map do |name, value|
+    hash = {}
+    arr1.each do |data|
+      if data[:first_name] == name
+        hash = value.merge(data)
       end
     end
-    new_prop_hash
+    hash
   end
 end
 
@@ -75,22 +75,6 @@ end
 
 
 
-#{"Chicago"=>["dev boot camp chicago"], "NYC"=>["flatiron school bk", "flatiron school", "general assembly"], "SF"=>["dev boot camp", "Hack Reactor"]}
 
-#def merge_data(keys, data)
-    #keys.each do |hash| 
-      #data.each do |data_hash| 
-    
-      #hash.each do |hash_key, hash_value|
-        #data_hash.clone.each do |data_hash_key, data_hash_value|
-          #if hash_value == data_hash_key
-            #binding.pry
-            #data_hash[:motto] = hash[:motto]
-          #end
-         #end
-        #end
-      #end
-    #end
-  #end
 
 
