@@ -30,17 +30,49 @@ def count_elements(array)
 end
 
     # combines two nested data structures into one
+
+
 def merge_data (keys, data)
-    keys[0].values.map.with_index {|v, i| data[i].merge(v)}
+  data[0].map do |name, hash|
+  new = {}
+    keys.each do |info| 
+      if info [:first_name] == name 
+        new = hash.merge(info)
+      end
+    end
+  new
+end 
 end
 
 #find all cool hashes
+
 def find_cool(cool)
   cool.select { |data| data[:temperature] == "cool" }
 end
+
+#alternative: 
+# def find_cool(array)
+#  container = []
+#  array.each do |element|
+#    container << element if element[:temperature] == "cool"
+#  end
+#  container
+# end
+
+
+    # organizes the schools by location
+def organize_schools(schools)
+  organized_schools = {}
+  schools.each do |name, place|
+    location = place[:location]
+    if organized_schools[location]
+      organized_schools[location] << name
+    else
+      organized_schools[location] = []
+      organized_schools[location] << name
+    end
+  end
+  organized_schools
 end
 
-def organize_schools
-    # organizes the schools by location
-end
 
