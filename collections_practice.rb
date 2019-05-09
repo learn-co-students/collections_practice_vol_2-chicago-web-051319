@@ -43,5 +43,18 @@ end
 
 
 def merge_data(data, info)
-
+  info[0].map do |name, hash|
+    new_hash = {}
+    data.each do |hashes|
+      if hashes[:first_name] == name
+        new_hash = hash.merge(hashes)
+      end
+    end
+    new_hash
+  end
 end
+  #new_data1 = {data[0].keys.to_a[0] => info.to_a[0].to_a[0][0]}
+  #new_info1 = new_data1.merge(info[0].values.to_a[0])
+  #new_data2 = {data[1].keys.to_a[0] => info.to_a[0].to_a[1][0]}
+  #new_info2 = new_data2.merge(info[0].values.to_a[1])
+  #[new_info1, new_info2]
