@@ -53,8 +53,28 @@ def merge_data(data, info)
     new_hash
   end
 end
-  #new_data1 = {data[0].keys.to_a[0] => info.to_a[0].to_a[0][0]}
-  #new_info1 = new_data1.merge(info[0].values.to_a[0])
-  #new_data2 = {data[1].keys.to_a[0] => info.to_a[0].to_a[1][0]}
-  #new_info2 = new_data2.merge(info[0].values.to_a[1])
-  #[new_info1, new_info2]
+
+
+def find_cool(hash)
+  if hash[1].values[1] == "cool"
+    [hash[1]]
+  end
+end
+
+
+def organize_schools(schools)
+  empty_array = []
+  schools.values.to_a.each do |value|
+    empty_array << value.values
+end
+school_array = empty_array.flatten.uniq.sort
+
+h1 = {schools.to_a[0][1].values[0] => [schools.to_a[0][0], schools.to_a[1][0], schools.to_a[4][0]]}
+  h2 = {school_array[0] => [schools.to_a[3][0]]}
+  h3 = {school_array[2] => [schools.to_a[2][0], schools.to_a[5][0]]}
+  h = {}
+  h.merge!(h1)
+  h.merge!(h2)
+  h.merge!(h3)
+  h
+end
